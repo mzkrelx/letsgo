@@ -1,0 +1,61 @@
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Log files
+*.log
+
+# Binaries for programs and plugins
+*.bin
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Ignore go mod cache
+/.cache
+/go.sum
+
+# Ignore Mac-specific files
+.DS_Store
+
+# Ignore IntelliJ IDEA IDE settings
+.idea/
+
+# Ignore Visual Studio Code settings
+.vscode/
+
+# Ignore compiled binaries and generated files for Go programs
+/bin/
+/pkg/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+/_test
+
+# Ignore environment files
+.env
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+
+# Ignore local development files
+/dev/
+
+# Ignore dependencies managed by go modules
+/go.sum
+
+# Ignore any backup files
+*~
+
+# Ignore .gitignore itself
+!.gitignore
