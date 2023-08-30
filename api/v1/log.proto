@@ -1,0 +1,10 @@
+syntax = "proto3";  // 2 or 3. 3 is recommended.
+
+package log.v1; // Same as go package name.
+
+option go_package = "github.com/mzkrelx/api/log_v1";
+
+message Record {
+    bytes value = 1;
+    uint64 offset = 2;
+}
