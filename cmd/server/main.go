@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/mzkrelx/proglog/internal/server"
+	"github.com/mzkrelx/letsgo/internal/server"
 )
 
 // サーバーを作成して起動する

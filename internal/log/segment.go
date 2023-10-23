@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
+	api "github.com/mzkrelx/letsgo/api/v1"
 	"google.golang.org/protobuf/proto"
 )
 

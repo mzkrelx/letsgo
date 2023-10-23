@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	api "github.com/mzkrelx/proglog/api/v1"
+	api "github.com/mzkrelx/letsgo/api/v1"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/proto"
 )
@@ -36,7 +36,7 @@ func TestLog(t *testing.T) {
 }
 
 func testAppendRead(t *testing.T, log *Log) {
-	append := &api,Record{
+	append := &api.Record{
 		Value: []byte("hello world"),
 	}
 	off, err := log.Append(append)
@@ -64,12 +64,25 @@ func testInitExisting(t *testing.T, o *Log) {
 		_, err := o.Append(append)
 		require.NoError(t, err)
 	}
+	require.NoError(t, o.Close())
 
-	err := log.Truncate(1)
+	off, err := o.LowestOffset()
 	require.NoError(t, err)
-	_, err = log.Read(0)
-	require.Error(t, err)
-	require.NoError(t, log.Close())
+	require.Equal(t, uint64(0), off)
+	off, err = o.HighestOffset()
+	require.NoError(t, err)
+	require.Equal(t, uint64(2), off)
+
+	n, err := NewLog(o.Dir, o.Config)
+	require.NoError(t, err)
+
+	off, err = n.LowestOffset()
+	require.NoError(t, err)
+	require.Equal(t, uint64(0), off)
+	off, err = n.HighestOffset()
+	require.NoError(t, err)
+	require.Equal(t, uint64(2), off)
+	require.NoError(t, n.Close())
 }
 
 func testReader(t *testing.T, log *Log) {
@@ -92,7 +105,7 @@ func testReader(t *testing.T, log *Log) {
 }
 
 func testTruncate(t * testing.T, log *Log) {
-	append := &api,Record{
+	append := &api.Record{
 		Value: []byte("hello world"),
 	}
 	for i := 0; i < 3; i++ {

@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	api "github.com/mzkrelx/proglog/api/v1"
+	api "github.com/mzkrelx/letsgo/api/v1"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/proto"
 )
